@@ -19,11 +19,8 @@ text-align:center;
 overflow:hidden;
 }
 
-.container{
-max-width:700px;
-}
-
-button{
+#botao{
+position:absolute;
 padding:15px 30px;
 font-size:22px;
 border:none;
@@ -31,15 +28,11 @@ border-radius:10px;
 background:#ff4d6d;
 color:white;
 cursor:pointer;
-position:absolute;
-}
-
-button:hover{
-background:#ff1e4d;
 }
 
 #mensagem{
 display:none;
+max-width:700px;
 font-size:22px;
 line-height:1.6;
 padding:20px;
@@ -49,8 +42,6 @@ padding:20px;
 </head>
 
 <body>
-
-<div class="container">
 
 <button id="botao">Clique aqui</button>
 
@@ -62,9 +53,7 @@ Desde o dia que a gente se conheceu minha vida ficou muito mais feliz. Mesmo a g
 
 </div>
 
-</div>
-
-<audio id="musica" autoplay loop>
+<audio id="musica" loop>
 <source src="musica.mp3" type="audio/mp3">
 </audio>
 
@@ -72,15 +61,16 @@ Desde o dia que a gente se conheceu minha vida ficou muito mais feliz. Mesmo a g
 
 let tentativas = 0
 let botao = document.getElementById("botao")
+let musica = document.getElementById("musica")
 
-document.getElementById("musica").volume = 0.2
+musica.volume = 0.2
 
-botao.addEventListener("mouseover", () => {
+botao.addEventListener("mouseover", function(){
 
 if(tentativas < 3){
 
-let x = Math.random() * (window.innerWidth - 200)
-let y = Math.random() * (window.innerHeight - 100)
+let x = Math.random() * (window.innerWidth - 150)
+let y = Math.random() * (window.innerHeight - 80)
 
 botao.style.left = x + "px"
 botao.style.top = y + "px"
@@ -91,13 +81,15 @@ tentativas++
 
 })
 
-botao.addEventListener("click", () => {
+botao.addEventListener("click", function(){
 
 if(tentativas >= 3){
 
 botao.style.display = "none"
 
 document.getElementById("mensagem").style.display = "block"
+
+musica.play()
 
 }
 
