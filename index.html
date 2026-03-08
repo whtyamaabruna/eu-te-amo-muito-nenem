@@ -36,6 +36,28 @@ max-width:700px;
 font-size:22px;
 line-height:1.6;
 padding:20px;
+z-index:2;
+}
+
+/* corações */
+
+.heart{
+position:fixed;
+bottom:-20px;
+color:red;
+font-size:20px;
+animation:subir 6s linear infinite;
+}
+
+@keyframes subir{
+0%{
+transform:translateY(0);
+opacity:1;
+}
+100%{
+transform:translateY(-110vh);
+opacity:0;
+}
 }
 
 </style>
@@ -46,11 +68,7 @@ padding:20px;
 <button id="botao">Clique aqui</button>
 
 <div id="mensagem">
-
-<p>
-Desde o dia que a gente se conheceu minha vida ficou muito mais feliz. Mesmo a gente estando longe, você é a pessoas mais importantes pra mim, obrigado por tudo que vc ja fez e faz por mim, e sempre vou fazer de tudo pra gente dar certo indenpendente de qualquer dificuldade a gente vai passar por tudo juntos. hoje é seu dia e não so hoje como todos os outros, eu tenho muito orgulho da mulher incrivel que voce é, parabens pelo seu dia minha nenem, eu te amo tanto meu amor ❤️
-</p>
-
+<p id="texto"></p>
 </div>
 
 <audio id="musica" loop>
@@ -91,9 +109,57 @@ document.getElementById("mensagem").style.display = "block"
 
 musica.play()
 
+escreverTexto()
+
 }
 
 })
+
+/* TEXTO ESCREVENDO */
+
+let mensagem = "Desde o dia que a gente se conheceu minha vida ficou muito mais feliz. Mesmo a gente estando longe, você é a pessoas mais importantes pra mim, obrigado por tudo que vc ja fez e faz por mim, e sempre vou fazer de tudo pra gente dar certo indenpendente de qualquer dificuldade a gente vai passar por tudo juntos. hoje é seu dia e não so hoje como todos os outros, eu tenho muito orgulho da mulher incrivel que voce é, parabens pelo seu dia minha nenem, eu te amo tanto meu amor ❤️"
+
+let i = 0
+
+function escreverTexto(){
+
+if(i < mensagem.length){
+
+document.getElementById("texto").innerHTML += mensagem.charAt(i)
+
+i++
+
+setTimeout(escreverTexto,40)
+
+}
+
+}
+
+/* CORAÇÕES */
+
+function criarCoracao(){
+
+let heart = document.createElement("div")
+
+heart.classList.add("heart")
+
+heart.innerHTML = "❤️"
+
+heart.style.left = Math.random()*100 + "vw"
+
+heart.style.fontSize = (Math.random()*20+10)+"px"
+
+document.body.appendChild(heart)
+
+setTimeout(function(){
+
+heart.remove()
+
+},6000)
+
+}
+
+setInterval(criarCoracao,300)
 
 </script>
 
