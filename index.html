@@ -12,12 +12,14 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:#0f0f0f;
+background:#ff6fa5;
 color:white;
 font-family:Arial;
 text-align:center;
 overflow:hidden;
 }
+
+/* botão */
 
 #botao{
 position:absolute;
@@ -25,18 +27,34 @@ padding:15px 30px;
 font-size:22px;
 border:none;
 border-radius:10px;
-background:#ff4d6d;
+background:#ff2f6d;
 color:white;
 cursor:pointer;
 }
 
-#mensagem{
+/* conteúdo */
+
+#conteudo{
 display:none;
 max-width:700px;
-font-size:22px;
-line-height:1.6;
 padding:20px;
 z-index:2;
+}
+
+#euTeAmo{
+font-size:50px;
+margin-bottom:10px;
+}
+
+#contador{
+font-size:20px;
+margin-bottom:20px;
+opacity:0.9;
+}
+
+#texto{
+font-size:22px;
+line-height:1.6;
 }
 
 /* corações */
@@ -50,14 +68,23 @@ animation:subir 6s linear infinite;
 }
 
 @keyframes subir{
-0%{
-transform:translateY(0);
-opacity:1;
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(-110vh);opacity:0;}
 }
-100%{
-transform:translateY(-110vh);
-opacity:0;
+
+/* estrelas */
+
+.star{
+position:fixed;
+color:white;
+font-size:10px;
+opacity:0.8;
+animation:brilhar 2s infinite alternate;
 }
+
+@keyframes brilhar{
+from{opacity:0.3}
+to{opacity:1}
 }
 
 </style>
@@ -67,8 +94,14 @@ opacity:0;
 
 <button id="botao">Clique aqui</button>
 
-<div id="mensagem">
+<div id="conteudo">
+
+<div id="euTeAmo">Eu te amo ❤️</div>
+
+<div id="contador">Estamos juntos há 117 dias ❤️</div>
+
 <p id="texto"></p>
+
 </div>
 
 <audio id="musica" loop>
@@ -103,13 +136,13 @@ botao.addEventListener("click", function(){
 
 if(tentativas >= 3){
 
-botao.style.display = "none"
+botao.style.display="none"
 
-document.getElementById("mensagem").style.display = "block"
+document.getElementById("conteudo").style.display="block"
 
 musica.play()
 
-escreverTexto()
+setTimeout(escreverTexto,1500)
 
 }
 
@@ -129,37 +162,57 @@ document.getElementById("texto").innerHTML += mensagem.charAt(i)
 
 i++
 
-setTimeout(escreverTexto,40)
+setTimeout(escreverTexto,35)
 
 }
 
 }
 
-/* CORAÇÕES */
+/* corações */
 
 function criarCoracao(){
 
 let heart = document.createElement("div")
 
-heart.classList.add("heart")
+heart.className="heart"
 
-heart.innerHTML = "❤️"
+heart.innerHTML="❤️"
 
-heart.style.left = Math.random()*100 + "vw"
+heart.style.left=Math.random()*100+"vw"
 
-heart.style.fontSize = (Math.random()*20+10)+"px"
+heart.style.fontSize=(Math.random()*20+10)+"px"
 
 document.body.appendChild(heart)
 
-setTimeout(function(){
-
-heart.remove()
-
-},6000)
+setTimeout(()=>heart.remove(),6000)
 
 }
 
 setInterval(criarCoracao,300)
+
+/* estrelas */
+
+function criarEstrela(){
+
+let star=document.createElement("div")
+
+star.className="star"
+
+star.innerHTML="✦"
+
+star.style.left=Math.random()*100+"vw"
+
+star.style.top=Math.random()*100+"vh"
+
+star.style.fontSize=(Math.random()*8+5)+"px"
+
+document.body.appendChild(star)
+
+}
+
+for(let i=0;i<60;i++){
+criarEstrela()
+}
 
 </script>
 
