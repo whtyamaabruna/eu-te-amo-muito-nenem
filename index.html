@@ -77,15 +77,20 @@ animation:cair 5s linear infinite;
 
 <div id="mensagem"></div>
 
-<audio autoplay loop>
+<audio id="musica" loop>
 <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
 <script>
 
 function amar(){
+
+let musica = document.getElementById("musica")
+musica.play()
+
 document.getElementById("mensagem").innerHTML =
 "Mesmo longe, você é a melhor parte do meu dia. Eu te amo muito ❤️";
+
 }
 
 let nao = document.getElementById("nao")
@@ -102,7 +107,7 @@ nao.style.top = y+"px"
 
 function atualizarTempo(){
 
-let inicio = new Date("2025-09-11")
+let inicio = new Date("2025-11-11")
 let agora = new Date()
 
 let diff = agora - inicio
@@ -135,16 +140,6 @@ coracao.remove()
 
 setInterval(criarCoracao,300)
 
-<script>
-function amar(){
-
-let musica = document.getElementById("musica")
-musica.play()
-
-document.getElementById("mensagem").innerHTML =
-"Mesmo longe, você é a melhor parte do meu dia. Eu te amo muito ❤️";
-
-}
 </script>
 
 </body>
