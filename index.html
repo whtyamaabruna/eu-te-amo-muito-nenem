@@ -77,18 +77,21 @@ animation:cair 5s linear infinite;
 
 <div id="mensagem"></div>
 
-<!-- Música do YouTube -->
-<iframe width="0" height="0"
-src="https://www.youtube.com/embed/75-Com9Bo_s?autoplay=1&loop=1&playlist=75-Com9Bo_s"
-frameborder="0"
-allow="autoplay">
-</iframe>
+<audio id="musica" loop>
+<source src="musica.mp3" type="audio/mpeg">
+</audio>
 
 <script>
 
 function amar(){
+
+let musica = document.getElementById("musica")
+musica.volume = 0.3
+musica.play()
+
 document.getElementById("mensagem").innerHTML =
 "Mesmo longe, você é a melhor parte do meu dia. Eu te amo muito ❤️";
+
 }
 
 let nao = document.getElementById("nao")
