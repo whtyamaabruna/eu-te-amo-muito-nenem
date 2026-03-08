@@ -8,55 +8,49 @@
 
 body{
 margin:0;
-font-family:Arial;
-background:black;
-color:white;
-}
-
-/* tela de senha */
-
-#login{
-position:fixed;
-width:100%;
 height:100vh;
-background:#0f0f0f;
 display:flex;
-flex-direction:column;
 justify-content:center;
 align-items:center;
-z-index:999;
-text-align:center;
-}
-
-input{
-padding:10px;
-font-size:18px;
-border-radius:8px;
-border:none;
-margin-top:10px;
-}
-
-button{
-padding:10px 20px;
-font-size:18px;
-border:none;
-border-radius:8px;
-background:#ff4d6d;
+background:linear-gradient(135deg,#ff4d6d,#0f0f0f);
 color:white;
-cursor:pointer;
-margin-top:10px;
-}
-
-button:hover{
-background:#ff1e4d;
-}
-
-/* site */
-
-#site{
-display:none;
+font-family:Arial;
+overflow:hidden;
 text-align:center;
-padding-top:100px;
+}
+
+.container{
+max-width:600px;
+z-index:2;
+}
+
+h1{
+font-size:45px;
+}
+
+p{
+font-size:22px;
+}
+
+/* corações */
+
+.heart{
+position:fixed;
+bottom:-10px;
+color:red;
+font-size:20px;
+animation:subir 6s linear infinite;
+}
+
+@keyframes subir{
+0%{
+transform:translateY(0);
+opacity:1;
+}
+100%{
+transform:translateY(-110vh);
+opacity:0;
+}
 }
 
 </style>
@@ -64,62 +58,68 @@ padding-top:100px;
 
 <body>
 
-<!-- TELA DE SENHA -->
+<div class="container">
 
-<div id="login">
+<h1>💌 Para Você</h1>
 
-<h2>Digite a senha para entrar 💌</h2>
-
-<p>Dica: um dia mt importante pra gente</p>
-
-<input type="password" id="senha" placeholder="Digite a senha">
-
-<br>
-
-<button onclick="entrar()">Entrar</button>
+<p id="texto"></p>
 
 </div>
-
-
-<!-- SEU SITE NORMAL -->
-
-<div id="site">
-
-<h1>❤️ Para Você ❤️</h1>
-
-<p>
-Esse site é só pra te lembrar o quanto você é importante pra mim.
-Mesmo longe, você é uma das melhores coisas que já aconteceu na minha vida.
-</p>
-
-</div>
-
-
-<!-- MUSICA -->
 
 <audio autoplay loop>
 <source src="musica.mp3" type="audio/mp3">
 </audio>
 
-
 <script>
 
-function entrar(){
+/* texto digitando */
 
-var senha = document.getElementById("senha").value;
+var mensagem = "Desde o dia que a gente se conheceu minha vida ficou muito mais feliz. Mesmo a gente estando longe, você é a pessoas mais importantes pra mim, obrigado por tudo que vc ja fez e faz por mim, e sempre vou fazer de tudo pra gente dar certo indenpendente de qualquer dificuldade a gente vai passar por tudo juntos. hoje é seu dia e não so hoje como todos os outros, eu tenho muito orgulho da mulher incrivel que voce é, parabens pelo seu dia minha nenem, eu te amo tanto meu amor ❤️";
 
-if(senha === "09112025"){
+var i = 0;
 
-document.getElementById("login").style.display="none";
-document.getElementById("site").style.display="block";
+function escrever(){
 
-}else{
+if(i < mensagem.length){
 
-alert("Senha errada 😢");
+document.getElementById("texto").innerHTML += mensagem.charAt(i);
+
+i++;
+
+setTimeout(escrever,40);
 
 }
 
 }
+
+escrever();
+
+
+/* corações caindo */
+
+function criarCoracao(){
+
+var heart = document.createElement("div");
+
+heart.classList.add("heart");
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(Math.random()*20+10)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},6000);
+
+}
+
+setInterval(criarCoracao,300);
 
 </script>
 
