@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>Para você ❤️</title>
 
 <style>
@@ -28,9 +29,19 @@ padding:15px 35px;
 font-size:20px;
 border:none;
 border-radius:10px;
+margin:10px;
+cursor:pointer;
+}
+
+#sim{
 background:white;
 color:#ff4e8a;
-cursor:pointer;
+}
+
+#nao{
+background:black;
+color:white;
+position:absolute;
 }
 
 #mensagem{
@@ -42,41 +53,52 @@ max-width:500px;
 .coracao{
 position:absolute;
 top:-10px;
-color:white;
 animation:cair 5s linear infinite;
 }
 
 @keyframes cair{
-0%{
-transform:translateY(-10px);
-opacity:1;
-}
-100%{
-transform:translateY(110vh);
-opacity:0;
-}
+0%{transform:translateY(-10px);opacity:1;}
+100%{transform:translateY(110vh);opacity:0;}
 }
 
 </style>
+
 </head>
 
 <body>
 
 <h1>Feliz Dia da Mulher ❤️</h1>
-<h2>Para a mulher mais incrível do mundo</h2>
+<h2>Você é a melhor coisa da minha vida</h2>
 
 <p id="tempo"></p>
 
-<button onclick="mostrar()">Clique aqui</button>
+<button id="sim" onclick="amar()">Eu te amo ❤️</button>
+<button id="nao">Não te amo</button>
 
 <div id="mensagem"></div>
 
+<audio autoplay loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_6a4d3b41de.mp3?filename=romantic-background-112191.mp3">
+</audio>
+
 <script>
 
-function mostrar(){
+function amar(){
 document.getElementById("mensagem").innerHTML =
 "Mesmo longe, você é a melhor parte do meu dia. Eu te amo muito ❤️";
 }
+
+let nao = document.getElementById("nao")
+
+nao.addEventListener("mouseover",function(){
+
+let x = Math.random()*window.innerWidth
+let y = Math.random()*window.innerHeight
+
+nao.style.left = x+"px"
+nao.style.top = y+"px"
+
+})
 
 function atualizarTempo(){
 
@@ -101,7 +123,7 @@ coracao.className="coracao"
 coracao.innerHTML="❤️"
 
 coracao.style.left=Math.random()*100+"vw"
-coracao.style.fontSize=(Math.random()*20+10)+"px"
+coracao.style.fontSize=(Math.random()*30+10)+"px"
 
 document.body.appendChild(coracao)
 
