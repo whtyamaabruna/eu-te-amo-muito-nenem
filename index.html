@@ -1,3 +1,77 @@
+Skip to content
+whtyamaabruna
+eu-te-amo-muito-nenem
+Repository navigation
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+Files
+Go to file
+t
+README.md
+index.html
+musica.mp3
+eu-te-amo-muito-nenem
+/
+index.html
+in
+main
+
+Edit
+
+Preview
+Indent mode
+
+Spaces
+Indent size
+
+2
+Line wrap mode
+
+No wrap
+Editing index.html file contents
+  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -34,94 +108,4 @@ font-size:22px;
 
 /* corações */
 
-.heart{
-position:fixed;
-bottom:-10px;
-color:red;
-font-size:20px;
-animation:subir 6s linear infinite;
-}
-
-@keyframes subir{
-0%{
-transform:translateY(0);
-opacity:1;
-}
-100%{
-transform:translateY(-110vh);
-opacity:0;
-}
-}
-
-</style>
-</head>
-
-<body>
-
-<div class="container">
-
-<h1>💌 Para Você</h1>
-
-<p id="texto"></p>
-
-</div>
-
-<audio autoplay loop>
-<source src="musica.mp3" type="audio/mp3">
-</audio>
-
-<script>
-
-/* texto digitando */
-
-var mensagem = "Desde o dia que a gente se conheceu minha vida ficou muito mais feliz. Mesmo a gente estando longe, você é a pessoas mais importantes pra mim, obrigado por tudo que vc ja fez e faz por mim, e sempre vou fazer de tudo pra gente dar certo indenpendente de qualquer dificuldade a gente vai passar por tudo juntos. hoje é seu dia e não so hoje como todos os outros, eu tenho muito orgulho da mulher incrivel que voce é, parabens pelo seu dia minha nenem, eu te amo tanto meu amor ❤️";
-
-var i = 0;
-
-function escrever(){
-
-if(i < mensagem.length){
-
-document.getElementById("texto").innerHTML += mensagem.charAt(i);
-
-i++;
-
-setTimeout(escrever,40);
-
-}
-
-}
-
-escrever();
-
-
-/* corações caindo */
-
-function criarCoracao(){
-
-var heart = document.createElement("div");
-
-heart.classList.add("heart");
-
-heart.innerHTML="❤️";
-
-heart.style.left=Math.random()*100+"vw";
-
-heart.style.fontSize=(Math.random()*20+10)+"px";
-
-document.body.appendChild(heart);
-
-setTimeout(()=>{
-
-heart.remove();
-
-},6000);
-
-}
-
-setInterval(criarCoracao,300);
-
-</script>
-
-</body>
-</html>
+Use Control + Shift + m to toggle the tab key moving focus. Alternatively, use esc then tab to move to the next interactive element on the page.
